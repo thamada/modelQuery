@@ -20,12 +20,12 @@ def load_modelfile(model_path):
         print(params)
 
     model_paths = sorted(list(Path(model_path).glob('consolidated.*.pth')))
-    models = [torch.load(p, map_location='cpu', weights_only=True) for p in model_paths]
 
     total_params = 0
     total_bytes = 0
 
-    for m in models:
+    for fname in model_paths:
+        m = torch.load(fname, map_location='cpu', weights_only=True)
         for i, key in enumerate(m.keys()):
             n_param = get_n_params(m[key])
             n_bytes = n_param * m[key].element_size()
