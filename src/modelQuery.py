@@ -2,6 +2,7 @@
 
 import os
 import sys
+import time
 from pathlib import Path
 import json
 import torch
@@ -36,12 +37,12 @@ def load_modelfile(model_path):
 
     for fi, fname in enumerate(model_paths):
         print ('\n', '-' * 30)
-        print ("%d params in total.\n", total_params)
-        print ("%d bytes in total.\n", total_bytes)
+        print ("%d params in total.\n" % total_params)
+        print ("%d bytes in total.\n" % total_bytes)
         if (total_bytes > 0):
             time_lap = time.time() - time_lap
             bw = (total_bytes / time_lap) / (1024. * 1024.) # MB/sec
-            print("%.2f sec, %.2f sec, %.2f MB/s" % (time_total, time_lap, bw)
+            print("%.2f sec, %.2f sec, %.2f MB/s" % (time_total, time_lap, bw))
 
         print ("[%d/%d]: Loading %s" % (fi, len(model_paths),fname)) 
         m = torch.load(fname, map_location='cpu', weights_only=True)
