@@ -21,10 +21,29 @@ def load_modelfile(model_path):
 
     model_paths = sorted(list(Path(model_path).glob('consolidated.*.pth')))
 
+    # for Llama-3-405B or larger models
+    if int(params['dim']) >= 16384:
+        print ('DIM=', params['dim'])
+        model_paths = sorted(list(Path(model_path).glob('consolidated.*/consolidated*.pth')))
+
+    for i, s in enumerate(model_paths):
+        print ("%03d: %s" % (i, s))
+
     total_params = 0
     total_bytes = 0
+    time_total = 0.0
+    time_lap = time.time()
 
-    for fname in model_paths:
+    for fi, fname in enumerate(model_paths):
+        print ('\n', '-' * 30)
+        print ("%d params in total.\n", total_params)
+        print ("%d bytes in total.\n", total_bytes)
+        if (total_bytes > 0):
+            time_lap = time.time() - time_lap
+            bw = (total_bytes / time_lap) / (1024. * 1024.) # MB/sec
+            print("%.2f sec, %.2f sec, %.2f MB/s" % (time_total, time_lap, bw)
+
+        print ("[%d/%d]: Loading %s" % (fi, len(model_paths),fname)) 
         m = torch.load(fname, map_location='cpu', weights_only=True)
         for i, key in enumerate(m.keys()):
             n_param = get_n_params(m[key])
