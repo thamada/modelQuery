@@ -21,7 +21,10 @@ python3 ./modelQuery/src/modelQuery.py ~/models/Meta-Llama-3.1-405B-Instruct/mod
 | [Llama-2-13B](https://huggingface.co/meta-llama/Llama-2-13b) | 13016279168 | 13.0163 | 26032558592 | 24.2447 | 40 | 5120 | [*](https://huggingface.co/meta-llama/Llama-2-13b/blob/main/params.json) |
 | [Llama-3-70B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct)     | 70562938880 | 70.5629 | 141125877760 | 131.4337 | 80 | 8192 | [*](https://huggingface.co/meta-llama/Meta-Llama-3-70B-Instruct/blob/main/original/params.json) |
 | [Llama-3.1-70B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct) | 70562938880 | 70.5629 | 141125877760 | 131.4337 | 80 | 8192 | [*](https://huggingface.co/meta-llama/Meta-Llama-3.1-70B-Instruct/blob/main/original/params.json) |
-| [Llama-3.1-405B-Instruct](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct) | 410143424512 | 410.1434 | 820286849024 | 763.9517 | 126 | 16384 | [*](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct/blob/main/original/mp16/params.json) |
+| [Llama-3.1-405B-Instruct(mp8)](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct) | 405882404864 | 405.8824 | 811764809728 | 756.0149 | 126 | 16384 | [*](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct/blob/main/original/mp8/params.json) |
+| [Llama-3.1-405B-Instruct(mp16)](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct) | 410143424512 | 410.1434 | 820286849024 | 763.9517 | 126 | 16384 | [*](https://huggingface.co/meta-llama/Meta-Llama-3.1-405B-Instruct/blob/main/original/mp16/params.json) |
+
+
 
 
 
