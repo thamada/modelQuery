@@ -33,15 +33,19 @@ def load_modelfile(model_path):
     total_params = 0
     total_bytes = 0
     time_total = 0.0
-    time_lap = time.time()
+    time_lap = 0.0
+    time_prev = time.time()
 
     for fi, fname in enumerate(model_paths):
         print ('\n', '-' * 30)
-        print ("%d params in total.\n" % total_params)
-        print ("%d bytes in total.\n" % total_bytes)
+        print ("%d params in total." % total_params)
+        print ("%d bytes in total." % total_bytes)
+        time_lap = time.time() - time_prev
+        time_prev = time.time()
+        time_total += time_lap
+
         if (total_bytes > 0):
-            time_lap = time.time() - time_lap
-            bw = (total_bytes / time_lap) / (1024. * 1024.) # MB/sec
+            bw = (total_bytes / time_total) / (1024. * 1024.) # MB/sec
             print("%.2f sec, %.2f sec, %.2f MB/s" % (time_total, time_lap, bw))
 
         print ("[%d/%d]: Loading %s" % (fi, len(model_paths),fname)) 
