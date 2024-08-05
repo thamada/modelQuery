@@ -48,7 +48,7 @@ def load_modelfile(model_path):
             bw = (total_bytes / time_total) / (1024. * 1024.) # MB/sec
             print("%.2f sec, %.2f sec, %.2f MB/s" % (time_total, time_lap, bw))
 
-        print ("[%d/%d]: Loading %s" % (fi, len(model_paths),fname)) 
+        print ("[%d/%d]: Loading %s" % (1+fi, len(model_paths),fname)) 
         m = torch.load(fname, map_location='cpu', weights_only=True)
         for i, key in enumerate(m.keys()):
             n_param = get_n_params(m[key])
