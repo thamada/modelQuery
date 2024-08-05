@@ -57,12 +57,14 @@ def load_modelfile(model_path):
             total_params += n_param
             total_bytes += n_bytes
 
+            s_size = str(m[key].size()).replace('torch.Size','').replace('(','').replace(')','')
             print ('% 4d' % i,
                    ':',
                    '% 15d:' % get_n_params(m[key]),
                    key,
-                   ":\t\t",
-                   m[key].size(),
+                   ": %010s" % s_size,
+                   ":\t",
+                   m[key].dtype
                    )
 
             '''
